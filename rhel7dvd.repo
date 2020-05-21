@@ -1,0 +1,25 @@
+[InstallMedia]
+name=Red Hat Enterprise Linux 7.2
+mediaid=1446216863.790260
+metadata_expire=-1
+gpgcheck=0
+cost=500
+enabled=1
+baseurl=file:///mnt/
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+
+[DVD-HighAvailability]
+mediaid=1359576196.686790
+name=DVD for Red Hat Enterprise Linux 7.2 - HighAvailability
+baseurl=file:///mnt/addons/HighAvailability
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+enabled=1
+gpgcheck=1
+
+[DVD-ResilientStorage]
+mediaid=1359576196.686790
+name=DVD for Red Hat Enterprise Linux 7.2 - ResilientStorage
+baseurl=file:///mnt/addons/ResilientStorage
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+enabled=1
+gpgcheck=1
