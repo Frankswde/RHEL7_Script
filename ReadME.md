@@ -14,13 +14,13 @@
 
 ### 系統設定：
 >  主機名稱	DCC-TEST-177
-
-##工作記錄：
+## 安裝流程
+### 工作記錄：
 
 |安裝人員|作業日期|備註|
 | :-------- | --------:| :--: |
 |Frank|2020/05/21|在VM上裝RHEL7|	
-## 安裝系統/基本套件/開發套件
+### 安裝系統/基本套件/開發套件
 1. 準備Red Hat Enterprise Linux 7.2 64-bit DVD光碟，並使用DVD光碟開機
 2. 進安裝畫面下按下TAB後，在 boot: 提示下使用 sshd=1 選項：
 
@@ -64,3 +64,40 @@ iLo	|192.168.5.10/24|	無使用	GW: N/A|
 7. 安裝完成後，按下[Reboot]將系統重新開機
 8. 初次登入系統，使用"root"帳號登入
 9. 設定DVD安裝ISO檔案為yum Server，藉由rhel7dvd.repo與Yum_Base_from_DVD.sh來安裝基本套件與開發套件
+
+### 安裝資料庫套件
+1. 安裝MariaDB (使用RHEL 7.2 DVD MariaDB 5.5)
+```
+yum install -y mariadb-server mariadb-devel mariadb-libs
+```
+2. 啟動MariaDB
+```
+	systemctl enable mariadb
+	systemctl start mariadb
+```
+3. 執行安全性安裝MariaDB
+```
+mysql_secure_installation
+```
+
+ 一開始輸入的root密碼依照預設值為空白，所以這邊直接按下Enter，之後再修改密碼為80268351，接者依照詢問內容如下
+	Set root password? [Y/n] n
+	Remove anonymous users? [Y/n] Y
+	Disallow root login remotely? [Y/n] Y
+	Remove test database and access to it? [Y/n] Y
+	Reload privilege tables now? [Y/n] Y
+4. 設定資料庫
+建立管理者(root)密碼 
+```
+ mysqladmin -u root password 80268351
+
+```
+		§ 關閉mysql history
+			○ 各別登入系統帳號設定
+				§ rm ~/.mysql_history
+				§ ln -s /dev/null ~/.mysql_history
+			○ 登入其他系統使用者帳號(airlink)，執行上列指令
+		§ [RH 7新增]調整MySQL服務參數
+			○ 修改server.cnf參數檔案
+			vi /etc/my.cnf.d/server.cnf
+在參數檔最後的[mariadb-5.5]標簽底下，增加下列參數
