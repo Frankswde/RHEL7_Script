@@ -5,8 +5,8 @@
 ## Script 簡易使用法
 Download script與repo
 ```
-wget raw.githubusercontent.com/xylzq/RHEL7_Script/master/Yum_Base_from_DVD.sh
-wget raw.githubusercontent.com/xylzq/RHEL7_Script/master/rhel7dvd.repo
+wget https://raw.githubusercontent.com/Frankswde/RHEL7_Script/master/Yum_Base_from_DVD.sh
+wget https://raw.githubusercontent.com/Frankswde/RHEL7_Script/master/rhel7dvd.repo
 ```
 
 > Usage
