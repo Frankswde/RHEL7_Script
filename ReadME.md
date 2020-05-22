@@ -34,6 +34,7 @@
 3. Red Hat DVD開機時，選擇[English] / [English(United States)]，按下[Contiune]
 
 4. INSTALLATION SUMMARY畫面，個別設定項目如下：
+
 |類別	| - |	設定內容|
 |:-|:-:|:-|
 LOCALIZATION|DATE & TIME|	Asia/Taipei|	
@@ -47,6 +48,7 @@ SECURITY|SECURITY POLICY|(預設值)No profile selected|
 -|KDUMP	|(預設值)Kdump is enabled|
 
 5. 硬碟分割設定
+
 LV |Name	Size	|Mount Point|
 |:-|:-:|:-|
 lv_root	|ALL|	/|
