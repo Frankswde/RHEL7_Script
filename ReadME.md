@@ -2,6 +2,21 @@
 
 ## 環境設定參考 CIS_Red_Hat_Enterprise_Linux_7_Benchmark_v2.2.0.pdf
 
+## Script 簡易使用法
+Download script與repo
+```
+wget raw.githubusercontent.com/xylzq/RHEL7_Script/master/Yum_Base_from_DVD.sh
+wget raw.githubusercontent.com/xylzq/RHEL7_Script/master/rhel7dvd.repo
+```
+
+> Usage
+1. 確認來源是否正常
+2. 要先給 script執行權限
+3. 執行script前要在確認來源
+
+
+
+
 ## 系統資訊
 ### 主機規格：
 - Server:	VMware ESXi 5.5
