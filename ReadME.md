@@ -10,12 +10,17 @@
 ### 系統版本：
 > OS :	Red Hat Enterprise Linux 7.2 64-bit
 
-
-
 ### 系統設定：
 >  主機名稱	DCC-TEST-177
+ 	
+## 工作記錄：
+
+|安裝人員|作業日期|備註|
+| :-| -:| :--: |
+|Frank|2020/05/21|在VM上裝RHEL7|
+
 ## 安裝流程
-### 工作記錄：
+### 安裝說明
 
 |安裝人員|作業日期|備註|
 | :-------- | --------:| :--: |
@@ -65,6 +70,10 @@ iLo	|192.168.5.10/24|	無使用	GW: N/A|
 8. 初次登入系統，使用"root"帳號登入
 9. 設定DVD安裝ISO檔案為yum Server，藉由rhel7dvd.repo與Yum_Base_from_DVD.sh來安裝基本套件與開發套件
 
+### 系統設定
+
+
+
 ### 安裝資料庫套件
 1. 安裝MariaDB (使用RHEL 7.2 DVD MariaDB 5.5)
 ```
@@ -72,15 +81,14 @@ yum install -y mariadb-server mariadb-devel mariadb-libs
 ```
 2. 啟動MariaDB
 ```
-	systemctl enable mariadb
-	systemctl start mariadb
+systemctl enable mariadb
+systemctl start mariadb
 ```
 3. 執行安全性安裝MariaDB
 ```
 mysql_secure_installation
 ```
-
- 一開始輸入的root密碼依照預設值為空白，所以這邊直接按下Enter，之後再修改密碼為80268351，接者依照詢問內容如下
+一開始輸入的root密碼依照預設值為空白，所以這邊直接按下Enter，之後再修改密碼為80268351，接者依照詢問內容如下
 	Set root password? [Y/n] n
 	Remove anonymous users? [Y/n] Y
 	Disallow root login remotely? [Y/n] Y
@@ -92,12 +100,28 @@ mysql_secure_installation
  mysqladmin -u root password 80268351
 
 ```
-		§ 關閉mysql history
-			○ 各別登入系統帳號設定
-				§ rm ~/.mysql_history
-				§ ln -s /dev/null ~/.mysql_history
-			○ 登入其他系統使用者帳號(airlink)，執行上列指令
-		§ [RH 7新增]調整MySQL服務參數
-			○ 修改server.cnf參數檔案
-			vi /etc/my.cnf.d/server.cnf
-在參數檔最後的[mariadb-5.5]標簽底下，增加下列參數
+§ 關閉mysql history
+- 各別登入系統帳號設定
+  -  登入其他系統使用者帳號(airlink)，執行下列指令
+
+```
+rm ~/.mysql_history
+ln -s /dev/null ~/.mysql_history
+```
+
+§ [RH 7新增]調整MySQL服務參數
+- 修改server.cnf參數檔案
+```
+vi /etc/my.cnf.d/server.cnf
+```
+
+> 在參數檔最後的 [mariadb-5.5] 標簽底下，增加下列參數
+
+|增加參數|參數說明|驗證方式|預期結果|
+|:-|:-|:--|:--:|
+bind-address=0.0.0.0|	設定MariaDB只會Listing IPv4，若是沒有設定則會優先Listing IPv6|netstat -anopt	Proto應該顯示tcp，代表為IPv4|查看Proto欄位是tcp或是tcp6|
+local-infile=0|關閉local_file|SHOW VARIABLES WHERE Variable_name = 'local_infile';|	Valus=OFF|
+|max_connections=500|增加最大連線數量	|show variables like 'max_connections';	|Valus=500 |      
+innodb_file_per_table=ON	|將InnoDB格式的資料，各別存放在自己的Tables|	show variables like 'innodb_file_per_table';|	Valus=ON|
+skip-name-resolve=ON|	關閉DNS反查功能	|show variables like 'skip_name_resolve%';|	skip_name_resolve=ON|
+slow_query_log		slow_query_log_file = /var/log/mariadb/slow.log			long_query_time = 5|-| show variables like 'slow%';	|-|
