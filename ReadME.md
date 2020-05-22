@@ -28,18 +28,18 @@ wget https://raw.githubusercontent.com/Frankswde/RHEL7_Script/master/rhel7dvd.re
 ### 系統設定：
 >  主機名稱	DCC-TEST-177
  	
-## 工作記錄：
+## 歷程記錄：
 
-|安裝人員|作業日期|備註|
-| :-| -:| :--: |
-|Frank|2020/05/21|在VM上裝RHEL7|
 
-## 安裝流程
-### 安裝說明
-
-|安裝人員|作業日期|備註|
+|人員|作業日期|備註|
 | :-------- | --------:| :--: |
 |Frank|2020/05/21|在VM上裝RHEL7|	
+|-|2020/05/21|在VM上裝RHEL7|資料庫設定/系統環境|
+
+
+## 安裝流程
+
+	
 ### 安裝系統/基本套件/開發套件
 1. 準備Red Hat Enterprise Linux 7.2 64-bit DVD光碟，並使用DVD光碟開機
 2. 進安裝畫面下按下TAB後，在 boot: 提示下使用 sshd=1 選項：
