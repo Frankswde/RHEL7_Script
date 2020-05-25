@@ -10,7 +10,7 @@ mount /dev/sr0 /mnt
 
 # cope repo
 
-cp /home/rhel7dvd.repo /etc/yum.repos.d/rhel7dvd.repo
+cp ./rhel7dvd.repo /etc/yum.repos.d/rhel7dvd.repo
 
 # clean Yum cash
 
