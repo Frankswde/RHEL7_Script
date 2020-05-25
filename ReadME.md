@@ -7,6 +7,7 @@ Download script與repo
 ```
 wget https://raw.githubusercontent.com/Frankswde/RHEL7_Script/master/Yum_Base_from_DVD.sh
 wget https://raw.githubusercontent.com/Frankswde/RHEL7_Script/master/rhel7dvd.repo
+wget https://raw.githubusercontent.com/Frankswde/RHEL7_Script/master/Sysconfig.sh
 ```
 
 > Usage
@@ -70,7 +71,8 @@ lv_root	|ALL|	/|
 lv_tmp	|5120 (5GB)	|/tmp|
 lv_swap	|5120 (5GB)	|/swap|
 
-6. 網路設定		
+6. 網路設定
+		
 設備|IP|備註|
 |:-|:-:|:-|
 eth0	|IP: 192.168.13.177/24		GW: 192.168.13.254|-
@@ -114,7 +116,7 @@ mysql_secure_installation
 4. 設定資料庫
 建立管理者(root)密碼 
 ```
- mysqladmin -u root password 80268351
+ mysqladmin -u root password 
 
 ```
 § 關閉mysql history
