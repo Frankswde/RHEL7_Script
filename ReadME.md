@@ -144,3 +144,20 @@ local-infile=0|關閉local_file|SHOW VARIABLES WHERE Variable_name = 'local_infi
 innodb_file_per_table=ON	|將InnoDB格式的資料，各別存放在自己的Tables|	show variables like 'innodb_file_per_table';|	Valus=ON|
 skip-name-resolve=ON|	關閉DNS反查功能	|show variables like 'skip_name_resolve%';|	skip_name_resolve=ON|
 slow_query_log		slow_query_log_file = /var/log/mariadb/slow.log			long_query_time = 5|-| show variables like 'slow%';	|-|
+
+
+
+## 預計開啟的服務與用途
+|service |用途|
+|:-:|:-|
+auditd.service|安全審查|
+autovt@.service|登入訊息相關|
+crond.service|自動排程|
+getty@.service|tty控制|
+iptables.service|防火牆|
+lvm2-monitor.service |LVM支援
+mariad.service|MYSQL|
+postfix.service|郵件|
+rsyslog.service|系統日誌
+sshd.service|SSH連線
+xinetd.service| 其他網路服務(由extended internet daemon)
