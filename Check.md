@@ -70,6 +70,8 @@ chkconfig
 vi /etc/resolv.conf
 - 內部
 vi /etc/hosts
+
+
 ## 確認crontab設定
 - crontab白名單
 
@@ -83,12 +85,17 @@ cat  /etc/cron.allow
 ls  /root/bin/
 ```
 
-	- 檢查這四個script aide.sh  auditd.sh  LogCleaner.sh  ntpdate.sh
+- 檢查這四個script aide.sh  auditd.sh  LogCleaner.sh  ntpdate.sh
+
+
 aide.sh  
 auditd.sh  
 LogCleaner.sh  
 ntpdate.sh
-	- 確認檔案權限
+	
+
+
+- 確認檔案權限
 
 ```
 ls -al /etc/|grep cron
